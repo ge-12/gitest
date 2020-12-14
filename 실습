@@ -1,1 +1,54 @@
+#include <stdio.h>
+double findHeighest(double ary[], int n);
+double findLowest(double ary[], int n);
+void calcScore(double ary[], int n, double max, double min);
+    
+int main() {
+    int n;
+    double max, min;
+    scanf("%d", &n);
+    
+    double ary[100];
+    for(int i = 0; i < n; i++) {
+        scanf("%lf", &ary[i]);
+       
+    }
+    max = findHeighest(ary,  n);
+    min = findLowest(ary, n);
+    calcScore(ary, n, max, min);
+   return 0;
+}
 
+double findHeighest(double ary[], int n) {
+   double heigh = ary[0];
+   for(int i = 0; i < n; i++) {
+        if(heigh < ary[i])
+        {
+          heigh = ary[i];
+        }
+    }
+    return heigh;
+}
+
+double findLowest(double ary[], int n) {
+    double low = ary[0];
+   for(int i = 0; i < n; i++) {
+        if(low > ary[i])
+        {
+          low = ary[i];
+        }
+    }
+    return low;
+}
+
+void calcScore(double ary[], int n, double max, double min) {
+    double sum = 0, avg = 0;
+    for(int i = 0; i < n; i++) {
+        if(ary[i] != max  && ary[i] != min) {
+    
+    sum += ary[i];
+    }
+    }
+     avg = sum / (n-2);
+     printf("%.2f ", avg);
+}
